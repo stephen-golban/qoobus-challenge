@@ -21,7 +21,8 @@ const Login: React.FC = () => {
 
     const matchingPwd = await compare(password, user.password)
 
-    if (matchingPwd) {
+    if (!matchingPwd) return message.error('Incorrect password, please try again.')
+    else {
       message.success('You have been successfully logged in!')
       dispatch(setLoggedInSlice(true))
       dispatch(setCurrentUserSlice(user))
