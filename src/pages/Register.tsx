@@ -14,7 +14,7 @@ const Register: React.FC = () => {
   const database = useAppSelector((state) => state.database.users)
 
   const onFormSubmit = async (values: RegisterForm) => {
-    const { password, ...rest } = values
+    const { password, confirm_password, ...rest } = values
     const user: User | undefined = database.find((user) => user.email_address === values.email_address)
 
     if (user) return message.error('There is already a user registered with this e-mail address.')
@@ -28,7 +28,9 @@ const Register: React.FC = () => {
     )
     if (saved) {
       message.success('You have been successfully registered!')
-      router.push('/auth/login')
+      setTimeout(() => {
+        router.push('/auth/login')
+      }, 1500)
     }
   }
 

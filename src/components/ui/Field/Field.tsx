@@ -1,6 +1,5 @@
 import React from 'react'
-import { TWField } from './tw-styled'
-import { FormItemProps, Input } from 'antd'
+import { FormItemProps, Input, Form } from 'antd'
 import { IconType } from 'rc-tree/lib/interface'
 import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid'
 
@@ -12,7 +11,7 @@ interface IProps extends FormItemProps {
 const Field: React.FC<IProps> = ({ field_icon, is_password_field, ...props }: IProps) => {
   if (is_password_field)
     return (
-      <TWField {...props}>
+      <Form.Item {...props} style={{ width: '100%' }}>
         <Input.Password
           type="password"
           prefix={field_icon}
@@ -21,13 +20,13 @@ const Field: React.FC<IProps> = ({ field_icon, is_password_field, ...props }: IP
             visible ? <EyeIcon width={15} height={15} /> : <EyeOffIcon width={15} height={15} />
           }
         />
-      </TWField>
+      </Form.Item>
     )
 
   return (
-    <TWField {...props}>
+    <Form.Item {...props} style={{ width: '100%' }}>
       <Input type="text" prefix={field_icon} placeholder={props.label as string} />
-    </TWField>
+    </Form.Item>
   )
 }
 

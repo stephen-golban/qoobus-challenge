@@ -1,6 +1,6 @@
 import React from 'react'
-import { TWForm, TWFormButton, TWFormExtraLinks, TWFormTitle } from './tw-styled'
-import { FormProps } from 'antd'
+import styles from './form.module.css'
+import { FormProps, Form as AntForm, Button } from 'antd'
 
 interface IProps extends FormProps {
   form_title: string
@@ -10,14 +10,14 @@ interface IProps extends FormProps {
 
 const Form: React.FC<IProps> = ({ children, form_title, extra_links, submit_button_text, ...props }: IProps) => {
   return (
-    <TWForm {...props}>
-      <TWFormTitle>{form_title}</TWFormTitle>
+    <AntForm {...props} className={styles.form}>
+      <div className={styles.formTitle}>{form_title}</div>
       {children}
-      <TWFormButton htmlType="submit" type="primary">
+      <Button className={styles.button} htmlType="submit" type="primary">
         {submit_button_text}
-      </TWFormButton>
-      {extra_links && <TWFormExtraLinks>{extra_links}</TWFormExtraLinks>}
-    </TWForm>
+      </Button>
+      {extra_links && <div className={styles.extra}>{extra_links}</div>}
+    </AntForm>
   )
 }
 

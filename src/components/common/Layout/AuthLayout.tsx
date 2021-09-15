@@ -1,32 +1,22 @@
 import React from 'react'
-import { Loader } from '../../ui'
-import { TWAuthLayout } from './tw-styled'
+import styles from './layout.module.css'
 import { renderRoutes } from '../../../lib'
 import { auth_routes } from '../../../config'
 import { useAppSelector } from '../../../store/hooks'
-import { match, Switch, Redirect } from 'react-router-dom'
+import { Switch, useHistory } from 'react-router-dom'
 
-interface IProps {
-  history: any
-  location: any
-  match: match<{}>
-  staticContext?: any
-}
-
-const AuthLayout: React.FC<IProps> = () => {
+const AuthLayout: React.FC = () => {
+  const router = useHistory()
   const is_logged = useAppSelector((state) => state.auth.logged_in)
 
+  React.useEffect(() => {
+    if (is_logged !== null || is_logged) return router.push('/')
+  }, [is_logged, router])
+
   return (
-    <>
-      {is_logged ? (
-        <Loader />
-      ) : (
-        <TWAuthLayout>
-          <Switch>{renderRoutes(auth_routes)}</Switch>
-        </TWAuthLayout>
-      )}
-      {is_logged && <Redirect to="/" />}
-    </>
+    <div className={styles.authLayout}>
+      <Switch>{renderRoutes(auth_routes)}</Switch>
+    </div>
   )
 }
 

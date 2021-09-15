@@ -1,14 +1,16 @@
-import { Homepage } from './pages'
-import { AuthLayout, PrivateRoute } from './components/common'
+import React from 'react'
+import { AuthLayout, DefaultLayout, PrivateRoute } from './components/common'
 import { Route, Switch, BrowserRouter, RouteComponentProps } from 'react-router-dom'
+import { Cursor } from './components/ui'
 
-function App(): JSX.Element {
+const App: React.FC = () => {
   return (
-    <div className="app w-full h-screen min-h-screen">
+    <div className="app">
+      <Cursor />
       <BrowserRouter>
         <Switch>
-          <Route path="/auth" render={(props: RouteComponentProps) => <AuthLayout {...props} />} />
-          <PrivateRoute path="/" component={Homepage} />
+          <Route path="/auth" render={(_props: RouteComponentProps) => <AuthLayout />} />
+          <PrivateRoute path="/" component={DefaultLayout} />
         </Switch>
       </BrowserRouter>
     </div>

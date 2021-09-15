@@ -1,8 +1,8 @@
+import './index.css'
+import 'antd/dist/antd.css'
 import ReactDOM from 'react-dom'
 
 import App from './App'
-import 'antd/dist/antd.css'
-import './assets/index.css'
 import { Provider } from 'react-redux'
 import { Loader } from './components/ui'
 import * as serviceWorker from './serviceWorker'

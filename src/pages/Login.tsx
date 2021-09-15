@@ -25,7 +25,9 @@ const Login: React.FC = () => {
       message.success('You have been successfully logged in!')
       dispatch(setLoggedInSlice(true))
       dispatch(setCurrentUserSlice(user))
-      router.push('/')
+      setTimeout(() => {
+        router.push('/')
+      }, 1500)
     }
   }
   return (
