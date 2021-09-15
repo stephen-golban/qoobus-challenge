@@ -3,13 +3,15 @@
   padding: 40px 64px;
 }
 .chartWrapper {
+  padding-top: 40px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .chartBox {
   width: 600px;
-  margin-right: 40px;
+  margin: 40px;
 }
 .chartTitle {
   color: black;
