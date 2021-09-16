@@ -152,6 +152,7 @@ const Register: React.FC = () => {
               return Promise.reject(new Error('The two passwords that you entered do not match!'))
             },
           }),
+          { required: true, message: "This field is required, please complete it. }
         ]}
       />
     </Form>
